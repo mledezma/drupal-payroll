@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "drupal-expert": {
+      "source": "madsnorgaard/agent-resources",
+      "sourceType": "github",
+      "computedHash": "9e1eba4980c3526e525ab05a357d24e2650e119a5c13f1326f16cdc230b6e8fb"
+    }
+  }
+}

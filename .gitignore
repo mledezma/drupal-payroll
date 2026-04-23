@@ -1,0 +1,111 @@
+# Drupal specific ignores
+
+# Ignore core when managing all of a project's dependencies with Composer
+# including Drupal core.
+web/core
+web/modules/contrib
+web/themes/contrib
+web/profiles/contrib
+web/libraries
+
+# Ignore vendor directories for Composer
+vendor/
+
+# Ignore Drupal's file directory
+web/sites/*/files/
+web/sites/*/private/
+
+# Ignore temporary files
+web/sites/*/translations/
+web/sites/*/tmp/
+
+# Ignore settings files that may contain sensitive information
+web/sites/*/settings.local.php
+web/sites/*/services*.yml
+web/sites/*/settings.ddev.php
+
+# Ignore uploaded files, but keep the directory structure
+web/sites/default/files/**
+!web/sites/default/files/
+!web/sites/default/files/.htaccess
+
+# DDEV specific ignores
+.ddev/.homeadditions/
+.ddev/.global_commands/
+.ddev/commands/web/
+.ddev/commands/db/
+.ddev/import-db/
+.ddev/.dbimageBuild/
+
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build artifacts and compiled assets (if using frontend build tools)
+web/themes/custom/*/assets/
+web/themes/custom/*/dist/
+web/themes/custom/*/build/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Backup files
+*.bak
+*.backup
+*.sql
+*.gz
+
+# Cache directories
+.cache/
+.tmp/
+
+# Package managers
+package-lock.json
+yarn.lock
+composer.phar
+
+# Configuration exports (these should be included but ignoring any local overrides)
+config/sync/
+
+# Drupal console
+.console/
+
+# PHPUnit
+phpunit.xml
+/phpunit.xml
+
+# Behat
+behat.local.yml
+
+# Local development
+web/sites/development.services.yml
+web/sites/default/settings.local.php
+
+# Skills directory (these are personal configuration, might want to include if shared)
+# .agents/
