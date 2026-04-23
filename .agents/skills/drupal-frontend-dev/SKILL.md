@@ -43,16 +43,24 @@ Each component lives in its own directory with:
 - Structure markup for performance (avoid deep nesting)
 
 **SCSS Organization:**
-- Use BEM methodology for custom CSS classes
-- Leverage SCSS variables for theme consistency
-- Write mobile-first responsive styles
-- Use `@apply` for common Tailwind utility combinations
+- Use BEM methodology for custom CSS classes (component-name, component-name__element)
+- Structure nested elements within parent component classes
+- Use `@apply` for applying multiple Tailwind utility classes
+- Implement state modifiers with additional classes (`.is-open`)
+- Use CSS custom properties and transitions for interactive states
+- Organize styles by component hierarchy and functionality
 
-**JavaScript Patterns:**
-- Use modern ES6+ syntax (const/let, arrow functions, destructuring)
-- Implement event delegation for dynamic content
-- Use Intersection Observer for lazy loading
-- Cache DOM queries and optimize for performance
+**JavaScript Patterns (Drupal Behaviors):**
+- Wrap all component JavaScript in Drupal.behaviors pattern
+- Use `once()` API to prevent duplicate event binding
+- Structure behavior with `attach: function (context)` for proper scoping
+- Cache DOM element references at component initialization
+- Implement proper event handler functions as separate methods
+- Use `const` for immutable references and arrow functions for event handlers
+- Handle accessibility states (`aria-hidden`, `role` attributes)
+- Implement keyboard event handling for interactive components
+- Use try-catch blocks for DOM manipulation that might fail
+- Follow functional programming patterns for state management
 
 ## Webpack Configuration
 
@@ -92,10 +100,9 @@ Each component lives in its own directory with:
 - Use `rel="preload"` for important assets
 
 ### JavaScript Optimization
-- Implement code splitting for large applications
-- Use dynamic imports for feature detection
 - Defer non-essential scripts
 - Optimize event listeners and DOM manipulation
+- Use Drupal behaviors for efficient JS integration
 
 ### Image and Media Optimization
 - Use responsive images with `srcset`
@@ -108,6 +115,74 @@ Each component lives in its own directory with:
 - Use BigPipe for above-the-fold content
 - Configure CSS/JS aggregation properly
 - Leverage Drupal's caching layers effectively
+
+## Code Structure Examples
+
+### SCSS File Structure Pattern
+```scss
+.component-name {
+  // Direct child element styles
+  img {
+    @apply utility-class-1 utility-class-2 utility-class-3;
+  }
+}
+
+.component-name__element {
+  @apply base-utilities;
+  @apply state-utilities;
+  @apply transition-utilities duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)];
+
+  // Nested element styles
+  img {
+    @apply responsive-utilities;
+  }
+}
+
+.component-name__element.is-state {
+  @apply state-specific-utilities;
+}
+```
+
+### JavaScript (Drupal Behavior) Structure Pattern
+```javascript
+((Drupal) => {
+  'use strict';
+
+  Drupal.behaviors.componentBehavior = {
+    attach: function (context) {
+      once('component-behavior', '.component-selector', context).forEach((el) => {
+        const component = el;
+        const relatedElement = component.querySelector('.related-selector');
+
+        // Define behavior methods
+        const methodName = () => {
+          // Implementation with proper DOM manipulation
+          component.classList.add('state-class');
+          component.setAttribute('aria-attribute', 'value');
+
+          // Handle body/document state changes
+          try {
+            document.body.style.property = 'value';
+          } catch (err) {
+            // Graceful error handling
+          }
+        };
+
+        // Event listeners
+        component.addEventListener('event', methodName);
+        relatedElement.addEventListener('event', methodName);
+
+        // Document-level event handling
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            // Handle keyboard interactions
+          }
+        });
+      });
+    },
+  };
+})(Drupal);
+```
 
 ## Component Development Workflow
 
