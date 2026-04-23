@@ -29,7 +29,7 @@ The project focuses on modern frontend development using TailwindCSS, SCSS, vani
 - Project type: `drupal11`
 - PHP version: `8.4`
 - Web server: `nginx-fpm`
-- Database: MariaDB `11.8`
+- Database: MariaDB `11.4`
 - Document root: `web/`
 - Project URL: `https://drupal-payroll.ddev.site`
 
@@ -60,7 +60,7 @@ ddev drush cex                # Export configuration
 ddev drush cim                # Import configuration
 ddev drush updb               # Run database updates
 ddev drush uli                # Generate one-time login link
-ddev drush sql:dump > backup.sql   # Database backup
+ddev export-db --file=backup_$(date +%Y%m%d).sql.gz   # Database backup with timestamp
 ddev drush status             # Show Drupal status
 ```
 
@@ -87,6 +87,7 @@ ddev composer update          # Update all dependencies
 │   ├── themes/custom/        # Custom themes with SDC components
 │   ├── modules/custom/       # Custom modules
 │   └── sites/default/        # Site-specific configuration
+├── config/                   # Configuration Management files (exported configs)
 ├── .ddev/                    # DDEV configuration
 ├── vendor/                   # Composer dependencies
 └── composer.json             # PHP dependency definitions
@@ -169,7 +170,6 @@ This project has custom skills available for specialized guidance:
 **User Roles & Permissions:**
 - **Admin**: Full access (create, edit, delete, configure)
 - **Manager**: Can create and edit employee records
-- **Viewer**: Read-only access to employee data
 
 **Technical Standards:**
 - Follow Drupal best practices for content modeling
