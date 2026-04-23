@@ -48,7 +48,7 @@ A comprehensive web application built on Drupal 11 to manage employee records an
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/drupal-payroll.git
+   git clone https://github.com/mledezma/drupal-payroll.git
    cd drupal-payroll
    ```
 
