@@ -1,0 +1,33 @@
+uuid: c764af9c-34a0-4e22-ad78-01c85fc92f0f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_work_permit_status
+field_name: field_work_permit_status
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: valid
+      label: Valid
+    -
+      value: expired
+      label: Expired
+    -
+      value: pending
+      label: Pending
+    -
+      value: not_required
+      label: 'Not Required'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

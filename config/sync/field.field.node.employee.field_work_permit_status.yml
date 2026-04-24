@@ -1,0 +1,23 @@
+uuid: 35c633cb-1a64-4be5-a862-6ea3b7b73de4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_work_permit_status
+    - node.type.employee
+  module:
+    - options
+id: node.employee.field_work_permit_status
+field_name: field_work_permit_status
+entity_type: node
+bundle: employee
+label: 'Work Permit Status'
+description: 'Current status of work authorization'
+required: false
+translatable: false
+default_value:
+  -
+    value: not_required
+default_value_callback: ''
+settings: {  }
+field_type: list_string

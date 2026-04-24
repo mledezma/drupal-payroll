@@ -1,0 +1,72 @@
+uuid: 3563c9c1-5bed-47f9-b124-173e09dc84d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.employee.field_contract_salary
+    - field.field.node.employee.field_date_of_birth
+    - field.field.node.employee.field_email_address
+    - field.field.node.employee.field_identification_number
+    - field.field.node.employee.field_phone_number
+    - field.field.node.employee.field_profile_photo
+    - field.field.node.employee.field_salary_paid
+    - field.field.node.employee.field_work_permit_status
+    - image.style.thumbnail
+    - node.type.employee
+  module:
+    - image
+    - options
+    - telephone
+    - user
+id: node.employee.teaser
+targetEntityType: node
+bundle: employee
+mode: teaser
+content:
+  field_email_address:
+    type: basic_string
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_identification_number:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_phone_number:
+    type: telephone_link
+    label: inline
+    settings:
+      title: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_profile_photo:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  field_work_permit_status:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  field_contract_salary: true
+  field_date_of_birth: true
+  field_salary_paid: true
+  links: true

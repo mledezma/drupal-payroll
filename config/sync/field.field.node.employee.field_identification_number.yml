@@ -1,0 +1,19 @@
+uuid: 026d623e-30aa-43e9-b15a-8237f5bda3b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_identification_number
+    - node.type.employee
+id: node.employee.field_identification_number
+field_name: field_identification_number
+entity_type: node
+bundle: employee
+label: 'Identification Number'
+description: 'Unique employee identifier (Employee ID, SSN, etc.)'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
