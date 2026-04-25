@@ -155,11 +155,16 @@ This project has custom skills available for specialized guidance:
 **Content Modeling:**
 - **Employee Content Type** with fields:
   - Text: Full Name, Identification Number, Phone Number
-  - Date: Date of Birth
+  - Date: Date of Birth, Entry Day
   - Email: Email Address
   - List: Work Permit Status (Valid, Expired, Pending, Not Required)
   - Image: Profile Photo (stored in public://employee-photos)
   - Decimal: Salary Paid, Contract Salary (with $ prefix, 2 decimal places)
+  - Taxonomy Reference: Contract Company (references Companies vocabulary)
+  - Date Range: Contract Duration (contract start and end dates)
+  - File: Contract Document (stored in date-organized directories)
+
+- **Companies Taxonomy Vocabulary** for managing company entities that employees can be contracted to
 
 **Data Management:**
 - Use Drupal Views for employee listings (sortable, filterable tables)
@@ -174,8 +179,9 @@ This project has custom skills available for specialized guidance:
 **Technical Standards:**
 - Follow Drupal best practices for content modeling
 - Use configuration management (config export/import)
-- Leverage core modules: Views, Field UI, Image
+- Leverage core modules: Views, Field UI, Image, File, Taxonomy, Datetime Range
 - Create reusable, clean structures
+- Utilize taxonomy for structured data relationships
 
 **UI/UX Requirements:**
 - Clean admin interface for non-technical users
