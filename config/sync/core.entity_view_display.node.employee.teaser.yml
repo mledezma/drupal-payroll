@@ -4,9 +4,13 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.employee.field_contract_company
+    - field.field.node.employee.field_contract_document
+    - field.field.node.employee.field_contract_duration
     - field.field.node.employee.field_contract_salary
     - field.field.node.employee.field_date_of_birth
     - field.field.node.employee.field_email_address
+    - field.field.node.employee.field_entry_day
     - field.field.node.employee.field_identification_number
     - field.field.node.employee.field_phone_number
     - field.field.node.employee.field_profile_photo
@@ -66,7 +70,11 @@ content:
     weight: 4
     region: content
 hidden:
+  field_contract_company: true
+  field_contract_document: true
+  field_contract_duration: true
   field_contract_salary: true
   field_date_of_birth: true
+  field_entry_day: true
   field_salary_paid: true
   links: true

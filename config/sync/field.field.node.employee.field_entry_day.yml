@@ -1,0 +1,21 @@
+uuid: 8a74c2e9-43ce-412f-9edd-97df7ea61b8b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_entry_day
+    - node.type.employee
+  module:
+    - datetime
+id: node.employee.field_entry_day
+field_name: field_entry_day
+entity_type: node
+bundle: employee
+label: 'Entry Day'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
