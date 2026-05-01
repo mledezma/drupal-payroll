@@ -1,0 +1,1064 @@
+# Employee Content Type - Field Mapping
+
+This document outlines the field structure for the Employee content type in the Drupal 11 Payroll & Employee Management System.
+
+## Field Definitions
+
+### 1. Profile Photo
+- **Field Name**: `field_employee_photo`
+- **Drupal Field Type**: `image`
+- **Machine Name**: `field_employee_photo`
+- **Label**: "Profile Photo"
+- **Required**: No
+- **Multiple Values**: No (single image)
+- **File Directory**: `public://employee-photos`
+- **Allowed Extensions**: png, gif, jpg, jpeg
+- **Maximum Upload Size**: 2 MB
+- **Maximum Dimensions**: 800x800 pixels
+- **Minimum Dimensions**: 100x100 pixels
+- **Image Styles**: 
+  - Thumbnail (150x150, scale and crop)
+  - Medium (300x300, scale and crop)
+  - Large (400x400, scale)
+- **Alt Text**: Required (for accessibility)
+- **Title Text**: Optional
+- **Description**: Employee profile photograph for identification purposes
+
+### 2. Full Name
+- **Field Name**: `field_employee_name`
+- **Drupal Field Type**: `string`
+- **Machine Name**: `field_employee_name`
+- **Label**: "Full Name"
+- **Required**: Yes
+- **Multiple Values**: No
+- **Maximum Length**: 255 characters
+- **Default Value**: None
+- **Format**: Plain text (no HTML)
+- **Validation**: 
+  - Must contain at least first and last name
+  - Only letters, spaces, hyphens, and apostrophes allowed
+- **Display**: 
+  - Form: Text field (single line)
+  - View: Plain text
+- **Description**: Employee's complete legal name (first, middle, last)
+
+### 3. Email Address
+- **Field Name**: `field_employee_email`
+- **Drupal Field Type**: `email`
+- **Machine Name**: `field_employee_email`
+- **Label**: "Email Address"
+- **Required**: Yes
+- **Multiple Values**: No
+- **Maximum Length**: 254 characters (RFC 5321 compliant)
+- **Default Value**: None
+- **Format**: Valid email format (validated by Drupal)
+- **Validation**: 
+  - Must be a valid email address format
+  - Unique per employee (no duplicates)
+- **Display**: 
+  - Form: Email field
+  - View: Email link (clickable mailto)
+- **Privacy**: Consider GDPR compliance for email storage
+- **Description**: Primary email address for employee contact and system notifications
+
+### 4. Phone Number
+- **Field Name**: `field_employee_phone`
+- **Drupal Field Type**: `telephone`
+- **Machine Name**: `field_employee_phone`
+- **Label**: "Phone Number"
+- **Required**: No
+- **Multiple Values**: No
+- **Maximum Length**: 20 characters
+- **Default Value**: None
+- **Format**: International or domestic format accepted
+- **Validation**: 
+  - Basic phone number format validation
+  - Allows digits, spaces, hyphens, parentheses, and plus sign
+  - Example formats: +1-555-123-4567, (555) 123-4567, 555.123.4567
+- **Display**: 
+  - Form: Telephone field
+  - View: Telephone link (clickable tel: link on mobile)
+- **Storage**: Store as entered (preserve user formatting preference)
+- **Description**: Primary contact phone number for the employee
+
+### 5. Department
+- **Field Name**: `field_employee_department`
+- **Drupal Field Type**: `string`
+- **Machine Name**: `field_employee_department`
+- **Label**: "Department"
+- **Required**: No
+- **Multiple Values**: No
+- **Maximum Length**: 100 characters
+- **Default Value**: None
+- **Format**: Plain text (no HTML)
+- **Validation**: 
+  - Alphanumeric characters, spaces, and common punctuation allowed
+  - Trim whitespace
+- **Display**: 
+  - Form: Text field (single line) with autocomplete suggestions
+  - View: Plain text
+- **Suggestions**: Consider using a select list for consistency:
+  - Human Resources, Finance, IT, Operations, Sales, Marketing, Administration
+- **Alternative**: Could be implemented as `list_string` for predefined departments
+- **Description**: Department or division where the employee works
+
+### 6. Job Position
+- **Field Name**: `field_employee_position`
+- **Drupal Field Type**: `string`
+- **Machine Name**: `field_employee_position`
+- **Label**: "Job Position"
+- **Required**: Yes
+- **Multiple Values**: No
+- **Maximum Length**: 100 characters
+- **Default Value**: None
+- **Format**: Plain text (no HTML)
+- **Validation**: 
+  - Alphanumeric characters, spaces, and common punctuation allowed
+  - Trim whitespace
+- **Display**: 
+  - Form: Text field (single line) with autocomplete suggestions
+  - View: Plain text
+- **Suggestions**: Consider using a select list for consistency:
+  - Manager, Developer, Analyst, Coordinator, Specialist, Assistant, Director, etc.
+- **Alternative**: Could be implemented as `list_string` for predefined job titles
+- **Description**: Employee's current job title or position within the organization
+
+### 7. Manager
+- **Field Name**: `field_employee_manager`
+- **Drupal Field Type**: `entity_reference`
+- **Machine Name**: `field_employee_manager`
+- **Label**: "Manager"
+- **Required**: No
+- **Multiple Values**: No
+- **Target Type**: Node
+- **Target Bundle**: Employee (same content type)
+- **Reference Method**: Views (filtered by role/position)
+- **Default Value**: None
+- **Validation**: 
+  - Must reference an existing employee
+  - Cannot reference self (circular reference prevention)
+- **Display**: 
+  - Form: Autocomplete widget (search by name)
+  - View: Link to manager's profile
+- **Widget Settings**: 
+  - Autocomplete matching: Contains
+  - Size of textfield: 60
+- **Alternative**: Could reference User entities if managers have user accounts
+- **Description**: Direct supervisor or manager of this employee
+
+### 8. Location
+- **Field Name**: `field_employee_location`
+- **Drupal Field Type**: `string`
+- **Machine Name**: `field_employee_location`
+- **Label**: "Location"
+- **Required**: No
+- **Multiple Values**: No
+- **Maximum Length**: 100 characters
+- **Default Value**: None
+- **Format**: Plain text (no HTML)
+- **Validation**: 
+  - Alphanumeric characters, spaces, and common punctuation allowed
+  - Trim whitespace
+- **Display**: 
+  - Form: Text field (single line) with autocomplete suggestions
+  - View: Plain text
+- **Suggestions**: Consider using a select list for consistency:
+  - Main Office, Remote, Branch Office A, Warehouse, Field Work, etc.
+- **Alternatives**: 
+  - `list_string` for predefined office locations
+  - `address` field (requires Address module) for full addresses
+  - `entity_reference` to Location taxonomy terms
+- **Description**: Primary work location or office where the employee is based
+
+### 9. Company
+- **Field Name**: `field_employee_company`
+- **Drupal Field Type**: `string`
+- **Machine Name**: `field_employee_company`
+- **Label**: "Company"
+- **Required**: Yes
+- **Multiple Values**: No
+- **Maximum Length**: 100 characters
+- **Default Value**: None
+- **Format**: Plain text (no HTML)
+- **Validation**: 
+  - Alphanumeric characters, spaces, and common punctuation allowed
+  - Trim whitespace
+- **Display**: 
+  - Form: Text field (single line) with autocomplete suggestions
+  - View: Plain text
+- **Suggestions**: Consider using a select list for consistency:
+  - Main Company, Subsidiary A, Partner Company, etc.
+- **Alternatives**: 
+  - `list_string` for predefined company entities
+  - `entity_reference` to Company content type or taxonomy terms
+  - Useful for multi-company organizations or contractor management
+- **Description**: Company or organization that employs this individual
+
+### 10. Usual Work Location
+- **Field Name**: `field_employee_work_schedule`
+- **Drupal Field Type**: `entity_reference_revisions` (Paragraphs)
+- **Machine Name**: `field_employee_work_schedule`
+- **Label**: "Usual Work Location"
+- **Required**: No
+- **Multiple Values**: No (single paragraph item)
+- **Target Type**: Paragraph
+- **Target Bundle**: `work_location_schedule`
+- **Default Value**: None
+
+**Paragraph Type Structure** (`work_location_schedule`):
+- **Monday Location**
+  - Field: `field_monday_location`
+  - Type: `string` (255 chars)
+  - Required: No
+- **Tuesday Location**
+  - Field: `field_tuesday_location`
+  - Type: `string` (255 chars)
+  - Required: No
+- **Wednesday Location**
+  - Field: `field_wednesday_location` 
+  - Type: `string` (255 chars)
+  - Required: No
+- **Thursday Location**
+  - Field: `field_thursday_location`
+  - Type: `string` (255 chars)
+  - Required: No
+- **Friday Location**
+  - Field: `field_friday_location`
+  - Type: `string` (255 chars)
+  - Required: No
+
+**Display**: 
+- Form: Grouped fieldset with day-by-day location inputs
+- View: Formatted table or list showing weekly schedule
+
+**Alternative Approaches**:
+1. **Field Collection**: Similar structure but using Field Collection module
+2. **Multiple Value Text**: Single field with format "Monday: Office A, Tuesday: Remote, etc."
+3. **Custom Field**: Create custom field type for weekly schedule
+
+**Description**: Weekly work location schedule showing where the employee typically works each weekday
+
+### 11. Notes
+- **Field Name**: `field_employee_notes`
+- **Drupal Field Type**: `text_long`
+- **Machine Name**: `field_employee_notes`
+- **Label**: "Notes"
+- **Required**: No
+- **Multiple Values**: No
+- **Maximum Length**: Unlimited (large text)
+- **Default Value**: None
+- **Format**: Plain text (no HTML by default)
+- **Text Processing**: 
+  - Option 1: Plain text (no formatting)
+  - Option 2: Filtered HTML (basic formatting allowed)
+  - Option 3: Full HTML (if rich formatting needed)
+- **Display**: 
+  - Form: Text area (5 rows default, resizable)
+  - View: Formatted text with line breaks preserved
+- **Validation**: 
+  - Basic text validation
+  - Consider character limit if needed (e.g., 1000 chars)
+- **Privacy**: Consider sensitive information policies
+- **Use Cases**: 
+  - Special accommodations, certifications, skills
+  - HR notes, performance comments
+  - Contact preferences, emergency information
+- **Description**: Additional notes or comments about the employee
+
+### 12. Resume
+- **Field Name**: `field_employee_resume`
+- **Drupal Field Type**: `file`
+- **Machine Name**: `field_employee_resume`
+- **Label**: "Resume"
+- **Required**: No
+- **Multiple Values**: No (single file)
+- **File Directory**: `private://employee-resumes`
+- **Allowed Extensions**: pdf, doc, docx
+- **Maximum Upload Size**: 5 MB
+- **Default Value**: None
+- **File Description**: Optional (encouraged for version tracking)
+- **Security**: 
+  - Use private file system for confidentiality
+  - Restrict access based on user permissions
+- **Display**: 
+  - Form: File upload widget with description field
+  - View: Download link (for authorized users only)
+- **Alternative**: `text_long` field for plain text resume content
+- **Access Control**: 
+  - Admin: Full access
+  - Manager: View/download for their department
+  - Viewer: Restricted or no access
+- **Description**: Employee's current resume or CV document (confidential)
+
+### 13. Certifications
+- **Field Name**: `field_employee_certifications`
+- **Drupal Field Type**: `entity_reference_revisions` (Paragraphs)
+- **Machine Name**: `field_employee_certifications`
+- **Label**: "Certifications"
+- **Required**: No
+- **Multiple Values**: Yes (unlimited)
+- **Target Type**: Paragraph
+- **Target Bundle**: `certification_item`
+- **Default Value**: None
+
+**Paragraph Type Structure** (`certification_item`):
+- **Certification Name**
+  - Field: `field_cert_name`
+  - Type: `string` (255 chars)
+  - Required: Yes
+- **Issuing Organization**
+  - Field: `field_cert_issuer`
+  - Type: `string` (255 chars)
+  - Required: No
+- **Date Obtained**
+  - Field: `field_cert_date_obtained`
+  - Type: `datetime` (date only)
+  - Required: No
+- **Expiration Date**
+  - Field: `field_cert_expiration`
+  - Type: `datetime` (date only)
+  - Required: No
+- **Certificate File**
+  - Field: `field_cert_file`
+  - Type: `file` (PDF/image)
+  - Required: No
+  - Directory: `private://employee-certificates`
+
+**Display**: 
+- Form: Add/remove multiple certification entries
+- View: Formatted list or table with status indicators
+
+**Alternative Approaches**:
+1. **Simple Text**: Multi-value `text` field for certification names only
+2. **Text Long**: Single field with formatted list of certifications
+
+**Description**: Professional certifications, licenses, and credentials held by the employee
+
+### 14. Birthday
+- **Field Name**: `field_employee_birthday`
+- **Drupal Field Type**: `datetime`
+- **Machine Name**: `field_employee_birthday`
+- **Label**: "Date of Birth"
+- **Required**: No
+- **Multiple Values**: No
+- **Date Type**: Date only (no time)
+- **Default Value**: None
+- **Date Format**: 
+  - Storage: Y-m-d (YYYY-MM-DD)
+  - Display: Configurable (e.g., MM/DD/YYYY or DD/MM/YYYY)
+- **Validation**: 
+  - Must be in the past
+  - Reasonable age limits (e.g., between 16-100 years old)
+- **Display**: 
+  - Form: Date picker widget
+  - View: Formatted date or age calculation
+- **Privacy Considerations**: 
+  - Sensitive personal information
+  - Consider GDPR/privacy compliance
+  - Restrict access based on user permissions
+- **Additional Features**: 
+  - Could calculate age automatically in views
+  - Birthday reminders/notifications possible
+- **Description**: Employee's date of birth for HR records and age verification
+
+### 15. Place of Birth
+- **Field Name**: `field_employee_birthplace`
+- **Drupal Field Type**: `string`
+- **Machine Name**: `field_employee_birthplace`
+- **Label**: "Place of Birth"
+- **Required**: No
+- **Multiple Values**: No
+- **Maximum Length**: 255 characters
+- **Default Value**: None
+- **Format**: Plain text (no HTML)
+- **Validation**: 
+  - Alphanumeric characters, spaces, commas, and common punctuation allowed
+  - Trim whitespace
+- **Display**: 
+  - Form: Text field (single line)
+  - View: Plain text
+- **Format Examples**: 
+  - "City, State, Country" (e.g., "New York, NY, USA")
+  - "City, Country" (e.g., "London, United Kingdom")
+  - "Country" (for privacy or general location)
+- **Privacy Considerations**: 
+  - Highly sensitive personal information
+  - Consider GDPR/privacy compliance requirements
+  - Restrict access based on user permissions
+  - May be required for legal/immigration documentation
+- **Alternative**: `address` field type for structured location data
+- **Description**: Employee's place of birth for legal and HR documentation purposes
+
+### 16. Gender
+- **Field Name**: `field_employee_gender`
+- **Drupal Field Type**: `list_string`
+- **Machine Name**: `field_employee_gender`
+- **Label**: "Gender"
+- **Required**: No
+- **Multiple Values**: No
+- **Default Value**: None (no selection)
+- **Allowed Values**:
+  - `male|Male`
+  - `female|Female`
+  - `non_binary|Non-binary`
+  - `prefer_not_to_say|Prefer not to say`
+  - `other|Other`
+- **Display**: 
+  - Form: Select list (dropdown) or Radio buttons
+  - View: Plain text label
+- **Privacy Considerations**: 
+  - Highly sensitive personal information
+  - Consider GDPR/privacy compliance requirements
+  - Restrict access based on user permissions
+  - May be required for legal reporting (EEO, diversity metrics)
+- **Legal Context**: 
+  - Often required for employment law compliance
+  - Diversity and inclusion reporting
+  - Equal opportunity monitoring
+- **Alternative**: Allow custom text input if "Other" is selected
+- **Description**: Employee's gender identity for HR records and legal compliance reporting
+
+### 17. Emergency Contact Name
+- **Field Name**: `field_employee_emergency_contact`
+- **Drupal Field Type**: `string`
+- **Machine Name**: `field_employee_emergency_contact`
+- **Label**: "Emergency Contact Name"
+- **Required**: No
+- **Multiple Values**: No
+- **Maximum Length**: 255 characters
+- **Default Value**: None
+- **Format**: Plain text (no HTML)
+- **Validation**: 
+  - Must contain at least first and last name
+  - Only letters, spaces, hyphens, and apostrophes allowed
+  - Trim whitespace
+- **Display**: 
+  - Form: Text field (single line)
+  - View: Plain text
+- **Privacy Considerations**: 
+  - Sensitive personal information
+  - Restrict access to authorized personnel only
+  - Consider GDPR compliance for third-party contact data
+- **Related Fields**: 
+  - Should be paired with emergency contact phone/relationship fields
+  - Consider grouping emergency contact information together
+- **Use Cases**: 
+  - Medical emergencies, workplace incidents
+  - Required for many workplace safety regulations
+- **Description**: Full name of primary emergency contact person for the employee
+
+### 18. Emergency Contact Phone
+- **Field Name**: `field_employee_emergency_phone`
+- **Drupal Field Type**: `telephone`
+- **Machine Name**: `field_employee_emergency_phone`
+- **Label**: "Emergency Contact Phone"
+- **Required**: No
+- **Multiple Values**: No
+- **Maximum Length**: 20 characters
+- **Default Value**: None
+- **Format**: International or domestic format accepted
+- **Validation**: 
+  - Basic phone number format validation
+  - Allows digits, spaces, hyphens, parentheses, and plus sign
+  - Example formats: +1-555-123-4567, (555) 123-4567, 555.123.4567
+- **Display**: 
+  - Form: Telephone field
+  - View: Telephone link (clickable tel: link on mobile)
+- **Storage**: Store as entered (preserve user formatting preference)
+- **Privacy Considerations**: 
+  - Sensitive third-party contact information
+  - Restrict access to authorized personnel only
+  - Consider GDPR compliance for third-party data
+- **Emergency Use**: 
+  - Should be easily accessible during emergencies
+  - Consider quick-access display for managers/HR
+- **Description**: Primary phone number for the employee's emergency contact
+
+### 19. Citizenship
+- **Field Name**: `field_employee_citizenship`
+- **Drupal Field Type**: `country`
+- **Machine Name**: `field_employee_citizenship`
+- **Label**: "Citizenship"
+- **Required**: No
+- **Multiple Values**: Yes (for dual citizenship)
+- **Module Dependency**: Country module
+- **Default Value**: None
+- **Country List**: ISO 3166-1 alpha-2 country codes
+- **Display**: 
+  - Form: Select list (dropdown) with country names
+  - View: Country name or flag (configurable)
+- **Storage**: 
+  - Stores ISO country code (e.g., "US", "CA", "GB")
+  - Display shows full country name
+- **Validation**: 
+  - Must be valid country from ISO list
+  - Automatically updated with country module updates
+- **Privacy Considerations**: 
+  - Sensitive personal information
+  - Required for work authorization verification
+  - Consider GDPR compliance requirements
+- **Legal Context**: 
+  - Important for immigration/visa status
+  - Work eligibility verification
+  - Tax reporting requirements
+- **Description**: Country/countries of citizenship for the employee
+
+### 20. SSN Number
+- **Field Name**: `field_employee_ssn`
+- **Drupal Field Type**: `string`
+- **Machine Name**: `field_employee_ssn`
+- **Label**: "Social Security Number"
+- **Required**: No
+- **Multiple Values**: No
+- **Maximum Length**: 11 characters (with dashes)
+- **Default Value**: None
+- **Format**: Plain text (no HTML)
+- **Validation**: 
+  - SSN format: XXX-XX-XXXX or XXXXXXXXX
+  - Only digits and hyphens allowed
+  - Must be exactly 9 digits (with optional formatting)
+- **Display**: 
+  - Form: Text field with input mask (XXX-XX-XXXX)
+  - View: **MASKED** display (e.g., XXX-XX-1234) - show only last 4 digits
+- **Security Requirements**: 
+  - **CRITICAL**: Extremely sensitive PII data
+  - Store in private file system or encrypted database fields
+  - Restrict access to authorized HR personnel only
+  - Consider field encryption modules
+  - Audit trail for all access
+- **Privacy Considerations**: 
+  - GDPR/CCPA compliance requirements
+  - Data breach notification requirements
+  - Regular security audits required
+- **Legal Context**: 
+  - Required for tax reporting (W-2, 1099)
+  - Employment verification (I-9)
+  - Background checks and credit reports
+- **Alternative**: Consider using encrypted field modules or external secure storage
+- **Description**: Employee's Social Security Number for tax and legal documentation (HIGHLY CONFIDENTIAL)
+
+### 21. Visa Number
+- **Field Name**: `field_employee_visa_number`
+- **Drupal Field Type**: `string`
+- **Machine Name**: `field_employee_visa_number`
+- **Label**: "Visa Number"
+- **Required**: No
+- **Multiple Values**: No
+- **Maximum Length**: 50 characters
+- **Default Value**: None
+- **Format**: Plain text (no HTML)
+- **Validation**: 
+  - Alphanumeric characters and common punctuation allowed
+  - Trim whitespace
+  - Various formats depending on issuing country
+- **Display**: 
+  - Form: Text field (single line)
+  - View: **MASKED** display (e.g., show only first/last few characters)
+- **Security Requirements**: 
+  - **HIGHLY SENSITIVE**: Government identification document
+  - Restrict access to authorized HR/immigration personnel only
+  - Consider field encryption modules
+  - Audit trail for all access
+  - Store in private file system
+- **Privacy Considerations**: 
+  - GDPR/privacy compliance requirements
+  - Immigration status information is protected
+  - Data breach notification requirements
+- **Legal Context**: 
+  - Work authorization verification (I-9 compliance)
+  - Immigration status tracking
+  - Visa renewal and expiration monitoring
+- **Related Fields**: Should pair with visa type and expiration date
+- **Alternative**: Consider encrypted storage or external secure system
+- **Description**: Employee's visa or work permit number (CONFIDENTIAL immigration document)
+
+### 22. Visa Document
+- **Field Name**: `field_employee_visa_document`
+- **Drupal Field Type**: `file`
+- **Machine Name**: `field_employee_visa_document`
+- **Label**: "Visa Document"
+- **Required**: No
+- **Multiple Values**: No (single file)
+- **File Directory**: `private://employee-visa-documents`
+- **Allowed Extensions**: pdf, jpg, jpeg, png
+- **Maximum Upload Size**: 10 MB
+- **Default Value**: None
+- **File Description**: Optional (encouraged for document version tracking)
+- **Security Requirements**: 
+  - **HIGHLY CONFIDENTIAL**: Government immigration document
+  - **MUST** use private file system (never public)
+  - Restrict access to authorized HR/immigration personnel only
+  - Consider file encryption at rest
+  - Audit trail for all downloads/views
+  - Secure file naming (avoid PII in filenames)
+- **Display**: 
+  - Form: File upload widget with description field
+  - View: **Restricted download link** (authorized users only)
+- **Privacy Considerations**: 
+  - Contains government identification and immigration status
+  - GDPR/privacy compliance critical
+  - Data breach notification requirements
+  - Regular security audits required
+- **Legal Context**: 
+  - I-9 employment verification documentation
+  - Immigration status proof
+  - Work authorization evidence
+- **File Management**: 
+  - Regular cleanup of expired documents
+  - Secure deletion procedures
+- **Description**: Official visa or work permit document file (HIGHLY CONFIDENTIAL)
+
+### 23. Work Permit Number
+- **Field Name**: `field_employee_work_permit_number`
+- **Drupal Field Type**: `string`
+- **Machine Name**: `field_employee_work_permit_number`
+- **Label**: "Work Permit Number"
+- **Required**: No
+- **Multiple Values**: No
+- **Maximum Length**: 50 characters
+- **Default Value**: None
+- **Format**: Plain text (no HTML)
+- **Validation**: 
+  - Alphanumeric characters and common punctuation allowed
+  - Trim whitespace
+  - Various formats depending on issuing country/authority
+- **Display**: 
+  - Form: Text field (single line)
+  - View: **MASKED** display (e.g., show only first/last few characters)
+- **Security Requirements**: 
+  - **HIGHLY SENSITIVE**: Government work authorization document
+  - Restrict access to authorized HR/immigration personnel only
+  - Consider field encryption modules
+  - Audit trail for all access
+  - Store in private file system
+- **Privacy Considerations**: 
+  - GDPR/privacy compliance requirements
+  - Work authorization status is protected information
+  - Data breach notification requirements
+- **Legal Context**: 
+  - Employment eligibility verification (I-9 compliance)
+  - Work authorization status tracking
+  - Permit renewal and expiration monitoring
+- **Related Fields**: Should pair with work permit expiration date and status
+- **Alternative**: Consider encrypted storage or external secure system
+- **Description**: Employee's work permit or employment authorization number (CONFIDENTIAL government document)
+
+### 24. Work Permit Document
+- **Field Name**: `field_employee_work_permit_doc`
+- **Drupal Field Type**: `file`
+- **Machine Name**: `field_employee_work_permit_doc`
+- **Label**: "Work Permit Document"
+- **Required**: No
+- **Multiple Values**: No (single file)
+- **File Directory**: `private://employee-work-permits`
+- **Allowed Extensions**: pdf, jpg, jpeg, png
+- **Maximum Upload Size**: 10 MB
+- **Default Value**: None
+- **File Description**: Optional (encouraged for document version tracking)
+- **Security Requirements**: 
+  - **HIGHLY CONFIDENTIAL**: Government work authorization document
+  - **MUST** use private file system (never public)
+  - Restrict access to authorized HR/immigration personnel only
+  - Consider file encryption at rest
+  - Audit trail for all downloads/views
+  - Secure file naming (avoid PII in filenames)
+- **Display**: 
+  - Form: File upload widget with description field
+  - View: **Restricted download link** (authorized users only)
+- **Privacy Considerations**: 
+  - Contains government work authorization status
+  - GDPR/privacy compliance critical
+  - Data breach notification requirements
+  - Regular security audits required
+- **Legal Context**: 
+  - I-9 employment verification documentation
+  - Work authorization proof (EAD, Green Card, etc.)
+  - Employment eligibility evidence
+- **File Management**: 
+  - Regular cleanup of expired documents
+  - Secure deletion procedures
+  - Version control for renewed permits
+- **Description**: Official work permit or employment authorization document file (HIGHLY CONFIDENTIAL)
+
+### 25. Current Address
+- **Field Name**: `field_employee_current_address`
+- **Drupal Field Type**: `address`
+- **Machine Name**: `field_employee_current_address`
+- **Label**: "Current Address"
+- **Required**: No
+- **Multiple Values**: No
+- **Module Dependency**: Address module
+- **Default Value**: None
+- **Address Components**:
+  - Street Address (Address Line 1)
+  - Address Line 2 (Optional)
+  - City/Locality
+  - State/Province
+  - Postal Code
+  - Country
+- **Display**: 
+  - Form: Structured address form with country-specific formatting
+  - View: Formatted address block according to postal standards
+- **Validation**: 
+  - Country-specific address format validation
+  - Postal code format validation
+  - Required fields based on country standards
+- **Privacy Considerations**: 
+  - Sensitive personal information (home address)
+  - Restrict access based on user permissions
+  - Consider GDPR compliance requirements
+  - May be needed for emergency contact purposes
+- **Formatting**: 
+  - Automatic formatting based on country postal standards
+  - Supports international address formats
+- **Alternative**: Multiple `string` fields (street, city, state, zip, country)
+- **Use Cases**: 
+  - Emergency contact information
+  - Mailing address for tax documents
+  - Background check requirements
+- **Description**: Employee's current residential address for HR records and emergency contact
+
+### 26. Marital Status
+- **Field Name**: `field_employee_marital_status`
+- **Drupal Field Type**: `list_string`
+- **Machine Name**: `field_employee_marital_status`
+- **Label**: "Marital Status"
+- **Required**: No
+- **Multiple Values**: No
+- **Default Value**: None (no selection)
+- **Allowed Values**:
+  - `single|Single`
+  - `married|Married`
+  - `divorced|Divorced`
+  - `widowed|Widowed`
+  - `separated|Separated`
+  - `domestic_partnership|Domestic Partnership`
+  - `prefer_not_to_say|Prefer not to say`
+- **Display**: 
+  - Form: Select list (dropdown) or Radio buttons
+  - View: Plain text label
+- **Privacy Considerations**: 
+  - Sensitive personal information
+  - Consider GDPR/privacy compliance requirements
+  - Restrict access based on user permissions
+  - Optional field to respect privacy preferences
+- **Legal Context**: 
+  - May be required for tax withholding calculations
+  - Benefits eligibility determination
+  - Emergency contact relationships
+  - Insurance coverage options
+- **Use Cases**: 
+  - Tax filing status coordination
+  - Benefits enrollment (spouse/family coverage)
+  - Emergency contact relationship context
+- **Description**: Employee's current marital status for tax and benefits administration
+
+### 27. Number of Children
+- **Field Name**: `field_employee_children_count`
+- **Drupal Field Type**: `integer`
+- **Machine Name**: `field_employee_children_count`
+- **Label**: "Number of Children"
+- **Required**: No
+- **Multiple Values**: No
+- **Default Value**: None (empty)
+- **Minimum Value**: 0
+- **Maximum Value**: 20 (reasonable upper limit)
+- **Step**: 1 (whole numbers only)
+- **Display**: 
+  - Form: Number field (spinner input)
+  - View: Plain number
+- **Validation**: 
+  - Must be non-negative integer
+  - Reasonable upper limit validation
+- **Privacy Considerations**: 
+  - Sensitive personal family information
+  - Consider GDPR/privacy compliance requirements
+  - Restrict access based on user permissions
+  - Optional field to respect privacy preferences
+- **Legal Context**: 
+  - Tax withholding calculations (dependents)
+  - Benefits eligibility (family coverage)
+  - Insurance coverage options
+  - Child care benefits eligibility
+- **Use Cases**: 
+  - Tax dependency calculations
+  - Family benefits enrollment
+  - Emergency contact planning
+  - Work-life balance considerations
+- **Alternative**: Could be expanded to separate fields for different age groups if needed
+- **Description**: Number of dependent children for tax and benefits administration
+
+### 28. Studies Level
+- **Field Name**: `field_employee_education_level`
+- **Drupal Field Type**: `list_string`
+- **Machine Name**: `field_employee_education_level`
+- **Label**: "Education Level"
+- **Required**: No
+- **Multiple Values**: No
+- **Default Value**: None (no selection)
+- **Allowed Values**:
+  - `elementary|Elementary School`
+  - `high_school|High School / Secondary`
+  - `some_college|Some College (No Degree)`
+  - `associate|Associate Degree`
+  - `bachelor|Bachelor's Degree`
+  - `master|Master's Degree`
+  - `doctorate|Doctorate / PhD`
+  - `professional|Professional Degree (JD, MD, etc.)`
+  - `trade_school|Trade School / Vocational Training`
+  - `other|Other`
+- **Display**: 
+  - Form: Select list (dropdown)
+  - View: Plain text label
+- **Validation**: 
+  - Must select from predefined list
+- **Privacy Considerations**: 
+  - Generally less sensitive than other personal data
+  - May be used for job placement and career development
+- **Use Cases**: 
+  - Job qualification verification
+  - Career development planning
+  - Training program eligibility
+  - Compensation benchmarking
+  - Skills assessment and development
+- **Alternative**: Could be expanded with additional fields for:
+  - Institution name, graduation year, field of study
+- **Description**: Highest level of formal education completed by the employee
+
+### 29. Studies Area
+- **Field Name**: `field_employee_studies_area`
+- **Drupal Field Type**: `string`
+- **Machine Name**: `field_employee_studies_area`
+- **Label**: "Field of Study"
+- **Required**: No
+- **Multiple Values**: No
+- **Maximum Length**: 255 characters
+- **Default Value**: None
+- **Format**: Plain text (no HTML)
+- **Validation**: 
+  - Alphanumeric characters, spaces, and common punctuation allowed
+  - Trim whitespace
+- **Display**: 
+  - Form: Text field (single line) with autocomplete suggestions
+  - View: Plain text
+- **Common Examples**: 
+  - Computer Science, Business Administration, Engineering
+  - Marketing, Accounting, Human Resources, Psychology
+  - Medicine, Law, Education, Communications
+- **Suggestions**: Consider using autocomplete with common study areas
+- **Privacy Considerations**: 
+  - Generally less sensitive educational information
+  - May be used for job placement and skill matching
+- **Use Cases**: 
+  - Skills and qualification assessment
+  - Job role matching and placement
+  - Career development planning
+  - Training program recommendations
+  - Team composition planning
+- **Alternative**: `list_string` for predefined study areas if standardization preferred
+- **Related**: Should pair with Education Level field for complete academic profile
+- **Description**: Primary field of study or academic specialization area for the employee
+
+### 30. Employee Hourly Rate
+- **Field Name**: `field_employee_hourly_rate`
+- **Drupal Field Type**: `decimal`
+- **Machine Name**: `field_employee_hourly_rate`
+- **Label**: "Hourly Rate"
+- **Required**: No
+- **Multiple Values**: No
+- **Precision**: 10 (total digits)
+- **Scale**: 2 (decimal places)
+- **Default Value**: None
+- **Minimum Value**: 0.00
+- **Maximum Value**: 999999.99
+- **Prefix**: $ (currency symbol)
+- **Display**: 
+  - Form: Number field with currency formatting
+  - View: Formatted currency (e.g., $25.50)
+- **Validation**: 
+  - Must be positive decimal number
+  - Two decimal places for cents precision
+- **Security Requirements**: 
+  - **HIGHLY CONFIDENTIAL**: Salary/wage information
+  - Restrict access to authorized HR/payroll personnel only
+  - Consider field encryption for sensitive financial data
+  - Audit trail for all access and modifications
+- **Privacy Considerations**: 
+  - Extremely sensitive compensation information
+  - GDPR/privacy compliance critical
+  - Regular security audits required
+- **Use Cases**: 
+  - Payroll calculations
+  - Overtime rate calculations (typically 1.5x base rate)
+  - Budget planning and cost analysis
+  - Compensation benchmarking
+- **Related Fields**: Should pair with salary type (hourly vs. salaried)
+- **Currency**: Assumes USD - consider currency field if multi-currency needed
+- **Description**: Employee's hourly compensation rate (CONFIDENTIAL payroll information)
+
+### 31. Billable Hourly Rate
+- **Field Name**: `field_employee_billable_rate`
+- **Drupal Field Type**: `decimal`
+- **Machine Name**: `field_employee_billable_rate`
+- **Label**: "Billable Hourly Rate"
+- **Required**: No
+- **Multiple Values**: No
+- **Precision**: 10 (total digits)
+- **Scale**: 2 (decimal places)
+- **Default Value**: None
+- **Minimum Value**: 0.00
+- **Maximum Value**: 999999.99
+- **Prefix**: $ (currency symbol)
+- **Display**: 
+  - Form: Number field with currency formatting
+  - View: Formatted currency (e.g., $125.00)
+- **Validation**: 
+  - Must be positive decimal number
+  - Two decimal places for cents precision
+  - Typically higher than employee hourly rate
+- **Security Requirements**: 
+  - **HIGHLY CONFIDENTIAL**: Client billing information
+  - Restrict access to authorized management/finance personnel only
+  - Consider field encryption for sensitive financial data
+  - Audit trail for all access and modifications
+- **Privacy Considerations**: 
+  - Sensitive business financial information
+  - GDPR/privacy compliance considerations
+  - Regular security audits required
+- **Use Cases**: 
+  - Client billing and invoicing
+  - Project cost estimation
+  - Profit margin calculations
+  - Contract pricing negotiations
+  - Revenue forecasting
+- **Business Logic**: 
+  - Usually includes markup over employee cost (2x-4x common)
+  - May vary by client, project type, or skill level
+- **Currency**: Assumes USD - consider currency field if multi-currency needed
+- **Description**: Rate charged to clients for employee's billable hours (CONFIDENTIAL business information)
+
+### 32. Employee Type
+- **Field Name**: `field_employee_type`
+- **Drupal Field Type**: `list_string`
+- **Machine Name**: `field_employee_type`
+- **Label**: "Employee Type"
+- **Required**: Yes
+- **Multiple Values**: No
+- **Default Value**: None (must be selected)
+- **Allowed Values**:
+  - `worker|Worker`
+  - `employee|Employee`
+  - `contractor|Contractor`
+  - `freelancer|Freelancer`
+- **Display**: 
+  - Form: Select list (dropdown) or Radio buttons
+  - View: Plain text label with optional styling/badges
+- **Validation**: 
+  - Must select from predefined list
+  - Required field for classification purposes
+- **Legal Context**: 
+  - Critical for tax classification (W-2 vs 1099)
+  - Determines benefits eligibility
+  - Affects labor law compliance
+  - Important for worker classification regulations
+- **Use Cases**: 
+  - Payroll processing and tax reporting
+  - Benefits administration
+  - Contract management
+  - Resource planning and allocation
+  - Compliance reporting
+- **Business Impact**: 
+  - Affects payment terms and methods
+  - Determines overtime eligibility
+  - Influences project assignment capabilities
+  - Impacts cost allocation and budgeting
+- **Styling Suggestions**: 
+  - Consider color-coded badges in views
+  - Different icons for each type
+- **Description**: Classification of worker relationship type for legal and payroll purposes
+
+### 33. Contract Type
+- **Field Name**: `field_employee_contract_type`
+- **Drupal Field Type**: `list_string`
+- **Machine Name**: `field_employee_contract_type`
+- **Label**: "Contract Type"
+- **Required**: Yes
+- **Multiple Values**: No
+- **Default Value**: None (must be selected)
+- **Allowed Values**:
+  - `temporary|Temporary`
+  - `full_time|Full Time`
+  - `seasonal|Seasonal`
+  - `part_time|Part Time`
+- **Display**: 
+  - Form: Select list (dropdown) or Radio buttons
+  - View: Plain text label with optional styling/badges
+- **Validation**: 
+  - Must select from predefined list
+  - Required field for employment classification
+- **Legal Context**: 
+  - Determines benefits eligibility (full-time vs part-time)
+  - Affects overtime calculations and thresholds
+  - Important for labor law compliance (FLSA, etc.)
+  - Influences leave entitlements and policies
+- **Use Cases**: 
+  - Scheduling and resource planning
+  - Benefits administration
+  - Payroll processing (different rules for each type)
+  - Performance review cycles
+  - Training program eligibility
+- **Business Impact**: 
+  - Affects cost calculations and budgeting
+  - Determines work hour expectations
+  - Influences project assignment capabilities
+  - Impacts vacation/PTO accrual rates
+- **Related Fields**: 
+  - Should pair with Employee Type for complete classification
+  - May determine expected weekly hours
+- **Styling Suggestions**: 
+  - Consider color-coded badges in views
+  - Status indicators for active seasonal workers
+- **Description**: Type of employment contract determining work schedule and benefits eligibility
+
+### 34. Badge Number
+- **Field Name**: `field_employee_badge_number`
+- **Drupal Field Type**: `string`
+- **Machine Name**: `field_employee_badge_number`
+- **Label**: "Badge Number"
+- **Required**: No
+- **Multiple Values**: No
+- **Maximum Length**: 50 characters
+- **Default Value**: None
+- **Format**: Plain text (no HTML)
+- **Validation**: 
+  - Alphanumeric characters and common punctuation allowed
+  - Trim whitespace
+  - Unique value (no duplicate badge numbers)
+- **Display**: 
+  - Form: Text field (single line)
+  - View: Plain text
+- **Unique Constraint**: 
+  - Badge numbers must be unique across all employees
+  - Consider validation to prevent duplicates
+- **Security Considerations**: 
+  - Access control identifier - moderately sensitive
+  - Could be used for unauthorized building access if compromised
+  - Restrict access to facilities/security personnel
+- **Use Cases**: 
+  - Building access control and security
+  - Time tracking and attendance systems
+  - Facility entry/exit logging
+  - Equipment checkout and asset tracking
+  - Emergency evacuation roll calls
+- **Format Examples**: 
+  - Numeric: "12345", "001234"
+  - Alphanumeric: "EMP001", "BADGE-2024-001"
+  - Barcode/RFID compatible formats
+- **Integration**: 
+  - Should sync with access control systems
+  - Time clock integration
+- **Description**: Employee identification badge number for access control and facility security
+
+---
+
+*Additional fields to be documented as provided...*
