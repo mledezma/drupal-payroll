@@ -1,0 +1,21 @@
+uuid: cf32dd2f-9840-4863-8c6e-e05d1d0008ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cert_date_obtained
+    - paragraphs.paragraphs_type.certification_item
+  module:
+    - datetime
+id: paragraph.certification_item.field_cert_date_obtained
+field_name: field_cert_date_obtained
+entity_type: paragraph
+bundle: certification_item
+label: 'Date Obtained'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

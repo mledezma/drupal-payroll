@@ -1,0 +1,21 @@
+uuid: 6f6e202b-e91e-470a-a4e3-9d16a5627cc3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_employee_gender
+    - node.type.employee
+  module:
+    - options
+id: node.employee.field_employee_gender
+field_name: field_employee_gender
+entity_type: node
+bundle: employee
+label: Gender
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

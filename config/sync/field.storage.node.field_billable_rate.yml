@@ -1,0 +1,20 @@
+uuid: 06e7e145-8008-48ea-bca2-de8ac3ef0e90
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_billable_rate
+field_name: field_billable_rate
+entity_type: node
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

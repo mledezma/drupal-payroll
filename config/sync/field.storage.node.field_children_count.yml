@@ -1,0 +1,20 @@
+uuid: d5f4fc0d-52a2-4133-826a-414d010c2db7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_children_count
+field_name: field_children_count
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

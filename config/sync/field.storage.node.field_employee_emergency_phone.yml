@@ -1,0 +1,19 @@
+uuid: 2fdcfaeb-395e-4bee-8960-8ba264d43321
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - telephone
+id: node.field_employee_emergency_phone
+field_name: field_employee_emergency_phone
+entity_type: node
+type: telephone
+settings: {  }
+module: telephone
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

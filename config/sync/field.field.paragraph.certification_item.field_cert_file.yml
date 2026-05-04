@@ -1,0 +1,27 @@
+uuid: ff0472bb-cd5c-418a-88e5-6814eb7dfb12
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cert_file
+    - paragraphs.paragraphs_type.certification_item
+  module:
+    - file
+id: paragraph.certification_item.field_cert_file
+field_name: field_cert_file
+entity_type: paragraph
+bundle: certification_item
+label: 'Certificate File'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: employee-certificates
+  file_extensions: 'pdf jpg jpeg png'
+  max_filesize: '5 MB'
+  description_field: false
+field_type: file

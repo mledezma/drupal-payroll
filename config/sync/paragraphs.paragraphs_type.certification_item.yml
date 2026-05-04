@@ -1,0 +1,10 @@
+uuid: d991d631-78d7-436c-9150-fe6c4c0dc8c2
+langcode: en
+status: true
+dependencies: {  }
+id: certification_item
+label: 'Certification Item'
+icon_uuid: null
+icon_default: null
+description: 'Individual certification or professional credential'
+behavior_plugins: {  }

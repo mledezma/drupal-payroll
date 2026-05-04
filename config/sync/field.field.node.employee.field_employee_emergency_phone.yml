@@ -1,0 +1,21 @@
+uuid: c9a1cd33-0702-4c97-8f9e-f8a51b971db6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_employee_emergency_phone
+    - node.type.employee
+  module:
+    - telephone
+id: node.employee.field_employee_emergency_phone
+field_name: field_employee_emergency_phone
+entity_type: node
+bundle: employee
+label: 'Emergency Contact Phone'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

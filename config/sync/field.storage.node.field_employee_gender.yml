@@ -1,0 +1,36 @@
+uuid: 392f430b-4028-4b14-8ee3-299775b9c4df
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_employee_gender
+field_name: field_employee_gender
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: male
+      label: Male
+    -
+      value: female
+      label: Female
+    -
+      value: non_binary
+      label: Non-binary
+    -
+      value: prefer_not_to_say
+      label: 'Prefer not to say'
+    -
+      value: other
+      label: Other
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

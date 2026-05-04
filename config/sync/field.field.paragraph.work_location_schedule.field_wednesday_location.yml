@@ -1,0 +1,19 @@
+uuid: ce32a156-4159-442a-b32d-f8e535ab3985
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_wednesday_location
+    - paragraphs.paragraphs_type.work_location_schedule
+id: paragraph.work_location_schedule.field_wednesday_location
+field_name: field_wednesday_location
+entity_type: paragraph
+bundle: work_location_schedule
+label: 'Wednesday Location'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

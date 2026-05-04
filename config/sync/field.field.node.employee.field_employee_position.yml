@@ -1,17 +1,18 @@
-uuid: 2023b7dc-4733-4028-87ed-4f8266858eb5
+uuid: 4e1ed6fe-cfa0-4d16-aa41-6a42408186c7
 langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_employee_position
     - node.type.employee
-id: node.employee.title
-field_name: title
+id: node.employee.field_employee_position
+field_name: field_employee_position
 entity_type: node
 bundle: employee
-label: 'Employee ID'
+label: 'Job Position'
 description: ''
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

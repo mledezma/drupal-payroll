@@ -1,0 +1,20 @@
+uuid: 077354ce-7438-4398-8de7-c60237f2c2ae
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_hourly_rate
+field_name: field_hourly_rate
+entity_type: node
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

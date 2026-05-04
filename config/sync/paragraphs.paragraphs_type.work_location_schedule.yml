@@ -1,0 +1,10 @@
+uuid: da74e45e-8d2c-4135-82a1-0bedf649397c
+langcode: en
+status: true
+dependencies: {  }
+id: work_location_schedule
+label: 'Weekly Work Location Schedule'
+icon_uuid: null
+icon_default: null
+description: 'Weekly schedule showing work locations for each weekday'
+behavior_plugins: {  }

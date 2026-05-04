@@ -21,10 +21,10 @@ settings:
   handler: 'default:file'
   handler_settings: {  }
   file_directory: employee-photos
-  file_extensions: 'png gif jpg jpeg webp'
-  max_filesize: '10 MB'
-  max_resolution: 2000x2000
-  min_resolution: 50x50
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: '2 MB'
+  max_resolution: 800x800
+  min_resolution: 100x100
   alt_field: true
   alt_field_required: true
   title_field: false

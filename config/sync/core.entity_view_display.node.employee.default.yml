@@ -3,70 +3,98 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.employee.field_contract_company
-    - field.field.node.employee.field_contract_document
-    - field.field.node.employee.field_contract_duration
-    - field.field.node.employee.field_contract_salary
+    - field.field.node.employee.field_badge_number
+    - field.field.node.employee.field_billable_rate
+    - field.field.node.employee.field_children_count
+    - field.field.node.employee.field_contract_type
+    - field.field.node.employee.field_current_address
     - field.field.node.employee.field_date_of_birth
+    - field.field.node.employee.field_education_level
     - field.field.node.employee.field_email_address
-    - field.field.node.employee.field_entry_day
-    - field.field.node.employee.field_identification_number
+    - field.field.node.employee.field_employee_birthplace
+    - field.field.node.employee.field_employee_certifications
+    - field.field.node.employee.field_employee_citizenship
+    - field.field.node.employee.field_employee_company
+    - field.field.node.employee.field_employee_department
+    - field.field.node.employee.field_employee_emergency_contact
+    - field.field.node.employee.field_employee_emergency_phone
+    - field.field.node.employee.field_employee_gender
+    - field.field.node.employee.field_employee_location
+    - field.field.node.employee.field_employee_manager
+    - field.field.node.employee.field_employee_name
+    - field.field.node.employee.field_employee_notes
+    - field.field.node.employee.field_employee_position
+    - field.field.node.employee.field_employee_resume
+    - field.field.node.employee.field_employee_ssn
+    - field.field.node.employee.field_employee_type
+    - field.field.node.employee.field_employee_visa_document
+    - field.field.node.employee.field_employee_visa_number
+    - field.field.node.employee.field_employee_work_schedule
+    - field.field.node.employee.field_hourly_rate
+    - field.field.node.employee.field_marital_status
     - field.field.node.employee.field_phone_number
     - field.field.node.employee.field_profile_photo
-    - field.field.node.employee.field_salary_paid
-    - field.field.node.employee.field_work_permit_status
+    - field.field.node.employee.field_studies_area
+    - field.field.node.employee.field_work_permit_doc
+    - field.field.node.employee.field_work_permit_number
     - image.style.medium
     - node.type.employee
   module:
+    - address
     - datetime
-    - datetime_range
+    - entity_reference_revisions
     - file
     - image
     - options
     - telephone
+    - text
     - user
 id: node.employee.default
 targetEntityType: node
 bundle: employee
 mode: default
 content:
-  field_contract_company:
-    type: entity_reference_label
+  field_badge_number:
+    type: string
     label: above
     settings:
-      link: true
+      link_to_entity: false
     third_party_settings: {  }
-    weight: 6
+    weight: 35
     region: content
-  field_contract_document:
-    type: file_default
-    label: above
-    settings:
-      use_description_as_link_text: true
-    third_party_settings: {  }
-    weight: 8
-    region: content
-  field_contract_duration:
-    type: daterange_default
-    label: above
-    settings:
-      timezone_override: ''
-      format_type: medium
-      from_to: both
-      separator: '-'
-    third_party_settings: {  }
-    weight: 7
-    region: content
-  field_contract_salary:
+  field_billable_rate:
     type: number_decimal
     label: above
     settings:
-      thousand_separator: ','
+      thousand_separator: ''
       decimal_separator: .
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 11
+    weight: 32
+    region: content
+  field_children_count:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 28
+    region: content
+  field_contract_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 34
+    region: content
+  field_current_address:
+    type: address_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 26
     region: content
   field_date_of_birth:
     type: datetime_default
@@ -77,6 +105,13 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
+  field_education_level:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 29
+    region: content
   field_email_address:
     type: basic_string
     label: above
@@ -84,22 +119,165 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  field_entry_day:
-    type: datetime_default
-    label: above
-    settings:
-      timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
-    weight: 9
-    region: content
-  field_identification_number:
+  field_employee_birthplace:
     type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 0
+    weight: 16
+    region: content
+  field_employee_certifications:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_employee_company:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_employee_department:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_employee_emergency_contact:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  field_employee_emergency_phone:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 19
+    region: content
+  field_employee_gender:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  field_employee_location:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_employee_manager:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_employee_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_employee_notes:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_employee_position:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_employee_resume:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_employee_ssn:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_employee_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 33
+    region: content
+  field_employee_visa_document:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  field_employee_visa_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_employee_work_schedule:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_hourly_rate:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 31
+    region: content
+  field_marital_status:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 27
     region: content
   field_phone_number:
     type: telephone_link
@@ -120,23 +298,30 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
-  field_salary_paid:
-    type: number_decimal
+  field_studies_area:
+    type: string
     label: above
     settings:
-      thousand_separator: ','
-      decimal_separator: .
-      scale: 2
-      prefix_suffix: true
+      link_to_entity: false
     third_party_settings: {  }
-    weight: 10
+    weight: 30
     region: content
-  field_work_permit_status:
-    type: list_default
+  field_work_permit_doc:
+    type: file_default
     label: above
-    settings: {  }
+    settings:
+      use_description_as_link_text: true
     third_party_settings: {  }
-    weight: 4
+    weight: 25
+    region: content
+  field_work_permit_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 24
     region: content
 hidden:
+  field_employee_citizenship: true
   links: true

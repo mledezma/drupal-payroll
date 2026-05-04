@@ -1,0 +1,51 @@
+uuid: 042ed885-a790-4470-981b-811582275176
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_education_level
+field_name: field_education_level
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: elementary
+      label: 'Elementary School'
+    -
+      value: high_school
+      label: 'High School / Secondary'
+    -
+      value: some_college
+      label: 'Some College (No Degree)'
+    -
+      value: associate
+      label: 'Associate Degree'
+    -
+      value: bachelor
+      label: "Bachelor's Degree"
+    -
+      value: master
+      label: "Master's Degree"
+    -
+      value: doctorate
+      label: 'Doctorate / PhD'
+    -
+      value: professional
+      label: 'Professional Degree (JD, MD, etc.)'
+    -
+      value: trade_school
+      label: 'Trade School / Vocational Training'
+    -
+      value: other
+      label: Other
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

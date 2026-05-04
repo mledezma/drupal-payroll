@@ -1,0 +1,20 @@
+uuid: 898211f0-a753-4086-9fee-a0af34289e3a
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - paragraphs
+id: paragraph.field_cert_expiration
+field_name: field_cert_expiration
+entity_type: paragraph
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

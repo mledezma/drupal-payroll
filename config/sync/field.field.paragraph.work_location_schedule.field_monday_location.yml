@@ -1,0 +1,19 @@
+uuid: dd8c188c-4bbb-4b40-8dec-b527ac779dbe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_monday_location
+    - paragraphs.paragraphs_type.work_location_schedule
+id: paragraph.work_location_schedule.field_monday_location
+field_name: field_monday_location
+entity_type: paragraph
+bundle: work_location_schedule
+label: 'Monday Location'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

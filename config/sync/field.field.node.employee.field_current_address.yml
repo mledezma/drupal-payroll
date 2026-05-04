@@ -1,0 +1,25 @@
+uuid: 0980e189-e3db-41c0-9193-5e6fe83a7dd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_current_address
+    - node.type.employee
+  module:
+    - address
+id: node.employee.field_current_address
+field_name: field_current_address
+entity_type: node
+bundle: employee
+label: 'Current Address'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  langcode_override: null
+  field_overrides: {  }
+  fields: {  }
+field_type: address

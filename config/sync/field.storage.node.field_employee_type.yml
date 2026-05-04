@@ -1,0 +1,33 @@
+uuid: 97bddaa7-0fd7-4fe8-9f3c-317229320843
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_employee_type
+field_name: field_employee_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: worker
+      label: Worker
+    -
+      value: employee
+      label: Employee
+    -
+      value: contractor
+      label: Contractor
+    -
+      value: freelancer
+      label: Freelancer
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

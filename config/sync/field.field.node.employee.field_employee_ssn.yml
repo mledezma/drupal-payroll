@@ -1,0 +1,19 @@
+uuid: 05e42035-943a-486a-bf3f-35ba3114ce52
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_employee_ssn
+    - node.type.employee
+id: node.employee.field_employee_ssn
+field_name: field_employee_ssn
+entity_type: node
+bundle: employee
+label: 'Social Security Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

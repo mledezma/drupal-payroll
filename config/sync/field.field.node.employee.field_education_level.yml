@@ -1,0 +1,21 @@
+uuid: 2a3ab5d3-e54a-4f71-984f-01c57bc6b62f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_education_level
+    - node.type.employee
+  module:
+    - options
+id: node.employee.field_education_level
+field_name: field_education_level
+entity_type: node
+bundle: employee
+label: 'Education Level'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
