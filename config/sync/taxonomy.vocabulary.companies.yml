@@ -1,0 +1,9 @@
+uuid: fc7270e8-2611-4ed2-8996-c6d79cd90f8e
+langcode: en
+status: true
+dependencies: {  }
+name: Companies
+vid: companies
+description: 'This taxonomy is for add the companies that the employee are working on'
+weight: 0
+new_revision: false

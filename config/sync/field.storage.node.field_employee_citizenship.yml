@@ -1,0 +1,20 @@
+uuid: 34da9a16-8bda-4a5e-b98b-60b233a62df1
+langcode: en
+status: true
+dependencies:
+  module:
+    - country
+    - node
+id: node.field_employee_citizenship
+field_name: field_employee_citizenship
+entity_type: node
+type: country
+settings:
+  selectable_countries: {  }
+module: country
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

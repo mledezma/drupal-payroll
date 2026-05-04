@@ -1,0 +1,59 @@
+uuid: 9dcfeafd-affd-4066-a88f-7c79cb9e9686
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.work_location_schedule.field_friday_location
+    - field.field.paragraph.work_location_schedule.field_monday_location
+    - field.field.paragraph.work_location_schedule.field_thursday_location
+    - field.field.paragraph.work_location_schedule.field_tuesday_location
+    - field.field.paragraph.work_location_schedule.field_wednesday_location
+    - paragraphs.paragraphs_type.work_location_schedule
+id: paragraph.work_location_schedule.default
+targetEntityType: paragraph
+bundle: work_location_schedule
+mode: default
+content:
+  field_friday_location:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_monday_location:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_thursday_location:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_tuesday_location:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_wednesday_location:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,19 @@
+uuid: cc4d0a32-97a8-4449-85ca-822f8832e727
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_employee_location
+    - node.type.employee
+id: node.employee.field_employee_location
+field_name: field_employee_location
+entity_type: node
+bundle: employee
+label: Location
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

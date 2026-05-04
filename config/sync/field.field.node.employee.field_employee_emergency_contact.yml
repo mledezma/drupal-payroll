@@ -1,0 +1,19 @@
+uuid: d3000bfc-ca35-45d1-82d0-bc0444cb2100
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_employee_emergency_contact
+    - node.type.employee
+id: node.employee.field_employee_emergency_contact
+field_name: field_employee_emergency_contact
+entity_type: node
+bundle: employee
+label: 'Emergency Contact Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

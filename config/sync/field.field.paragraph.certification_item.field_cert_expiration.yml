@@ -1,0 +1,21 @@
+uuid: 1478f78e-7815-4aab-a4a1-eb00a3174b60
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cert_expiration
+    - paragraphs.paragraphs_type.certification_item
+  module:
+    - datetime
+id: paragraph.certification_item.field_cert_expiration
+field_name: field_cert_expiration
+entity_type: paragraph
+bundle: certification_item
+label: 'Expiration Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

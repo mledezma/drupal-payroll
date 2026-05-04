@@ -1,0 +1,430 @@
+uuid: 8615ff1d-3ab8-4f4d-84b3-8b8135b3c55a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.employee.field_badge_number
+    - field.field.node.employee.field_billable_rate
+    - field.field.node.employee.field_children_count
+    - field.field.node.employee.field_contract_type
+    - field.field.node.employee.field_current_address
+    - field.field.node.employee.field_date_of_birth
+    - field.field.node.employee.field_education_level
+    - field.field.node.employee.field_email_address
+    - field.field.node.employee.field_employee_birthplace
+    - field.field.node.employee.field_employee_certifications
+    - field.field.node.employee.field_employee_citizenship
+    - field.field.node.employee.field_employee_company
+    - field.field.node.employee.field_employee_department
+    - field.field.node.employee.field_employee_emergency_contact
+    - field.field.node.employee.field_employee_emergency_phone
+    - field.field.node.employee.field_employee_gender
+    - field.field.node.employee.field_employee_location
+    - field.field.node.employee.field_employee_manager
+    - field.field.node.employee.field_employee_name
+    - field.field.node.employee.field_employee_notes
+    - field.field.node.employee.field_employee_position
+    - field.field.node.employee.field_employee_resume
+    - field.field.node.employee.field_employee_ssn
+    - field.field.node.employee.field_employee_type
+    - field.field.node.employee.field_employee_visa_document
+    - field.field.node.employee.field_employee_visa_number
+    - field.field.node.employee.field_employee_work_schedule
+    - field.field.node.employee.field_hourly_rate
+    - field.field.node.employee.field_marital_status
+    - field.field.node.employee.field_phone_number
+    - field.field.node.employee.field_profile_photo
+    - field.field.node.employee.field_studies_area
+    - field.field.node.employee.field_work_permit_doc
+    - field.field.node.employee.field_work_permit_number
+    - image.style.thumbnail
+    - node.type.employee
+  module:
+    - address
+    - country
+    - datetime
+    - entity_reference_revisions
+    - field_group
+    - file
+    - image
+    - path
+    - telephone
+    - text
+third_party_settings:
+  field_group:
+    group_personal_information:
+      children:
+        - title
+        - field_employee_name
+        - field_profile_photo
+        - field_email_address
+        - field_employee_resume
+        - field_employee_ssn
+        - field_phone_number
+        - field_employee_visa_number
+        - field_employee_visa_document
+        - field_work_permit_number
+        - field_work_permit_doc
+        - field_date_of_birth
+        - field_current_address
+        - field_employee_citizenship
+        - field_employee_location
+        - field_employee_gender
+        - field_employee_emergency_contact
+        - field_employee_emergency_phone
+        - field_studies_area
+        - field_education_level
+        - field_employee_certifications
+        - field_marital_status
+        - field_children_count
+        - field_employee_notes
+      label: 'Personal Information'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: open
+        description: ''
+        required_fields: true
+    group_contract_information:
+      children:
+        - field_employee_type
+        - field_employee_position
+        - field_employee_company
+        - field_employee_department
+        - field_employee_manager
+        - field_employee_birthplace
+        - field_employee_work_schedule
+        - field_contract_type
+        - field_hourly_rate
+        - field_billable_rate
+      label: 'Contract Information'
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: open
+        description: ''
+        required_fields: true
+id: node.employee.default
+targetEntityType: node
+bundle: employee
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_badge_number:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_billable_rate:
+    type: number
+    weight: 33
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_children_count:
+    type: number
+    weight: 23
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_contract_type:
+    type: options_select
+    weight: 31
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_current_address:
+    type: address_default
+    weight: 13
+    region: content
+    settings:
+      wrapper_type: fieldset
+    third_party_settings: {  }
+  field_date_of_birth:
+    type: datetime_default
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_education_level:
+    type: options_select
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_email_address:
+    type: email_default
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_employee_birthplace:
+    type: string_textfield
+    weight: 29
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_employee_certifications:
+    type: entity_reference_revisions_autocomplete
+    weight: 21
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_employee_citizenship:
+    type: country_default
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_employee_company:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_employee_department:
+    type: string_textfield
+    weight: 27
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_employee_emergency_contact:
+    type: string_textfield
+    weight: 17
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_employee_emergency_phone:
+    type: telephone_default
+    weight: 18
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_employee_gender:
+    type: options_select
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_employee_location:
+    type: string_textfield
+    weight: 15
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_employee_manager:
+    type: entity_reference_autocomplete
+    weight: 28
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_employee_name:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_employee_notes:
+    type: text_textarea
+    weight: 24
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_employee_position:
+    type: string_textfield
+    weight: 25
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_employee_resume:
+    type: file_generic
+    weight: 5
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_employee_ssn:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_employee_type:
+    type: options_select
+    weight: 24
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_employee_visa_document:
+    type: file_generic
+    weight: 9
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_employee_visa_number:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_employee_work_schedule:
+    type: entity_reference_revisions_autocomplete
+    weight: 30
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hourly_rate:
+    type: number
+    weight: 32
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_marital_status:
+    type: options_select
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_phone_number:
+    type: telephone_default
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_photo:
+    type: image_image
+    weight: 3
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_studies_area:
+    type: string_textfield
+    weight: 19
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_work_permit_doc:
+    type: file_generic
+    weight: 11
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_work_permit_number:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 8
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,26 @@
+uuid: 1c36a233-10d6-4e89-ae0d-dd17b15d6d22
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_employee_certifications
+    - node.type.employee
+  module:
+    - entity_reference_revisions
+id: node.employee.field_employee_certifications
+field_name: field_employee_certifications
+entity_type: node
+bundle: employee
+label: Certifications
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      certification_item: certification_item
+    negate: 0
+field_type: entity_reference_revisions

@@ -1,0 +1,23 @@
+uuid: 5abd579c-c63e-4095-b044-b563b46cd99a
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - node
+id: node.field_employee_resume
+field_name: field_employee_resume
+entity_type: node
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

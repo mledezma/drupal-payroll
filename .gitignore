@@ -90,9 +90,6 @@ package-lock.json
 yarn.lock
 composer.phar
 
-# Configuration exports (these should be included but ignoring any local overrides)
-config/sync/
-
 # Drupal console
 .console/
 

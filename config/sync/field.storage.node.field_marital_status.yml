@@ -1,0 +1,42 @@
+uuid: 88d57d86-1344-4da9-9df7-89bf7b64c3d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_marital_status
+field_name: field_marital_status
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: single
+      label: Single
+    -
+      value: married
+      label: Married
+    -
+      value: divorced
+      label: Divorced
+    -
+      value: widowed
+      label: Widowed
+    -
+      value: separated
+      label: Separated
+    -
+      value: domestic_partnership
+      label: 'Domestic Partnership'
+    -
+      value: prefer_not_to_say
+      label: 'Prefer not to say'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

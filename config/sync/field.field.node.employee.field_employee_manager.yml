@@ -1,0 +1,23 @@
+uuid: 7efc638b-7ad9-4d3c-882f-0c1243fd4593
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_employee_manager
+    - node.type.employee
+id: node.employee.field_employee_manager
+field_name: field_employee_manager
+entity_type: node
+bundle: employee
+label: Manager
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      employee: employee
+field_type: entity_reference

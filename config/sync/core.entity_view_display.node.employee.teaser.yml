@@ -1,0 +1,110 @@
+uuid: 3563c9c1-5bed-47f9-b124-173e09dc84d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.employee.field_badge_number
+    - field.field.node.employee.field_billable_rate
+    - field.field.node.employee.field_children_count
+    - field.field.node.employee.field_contract_type
+    - field.field.node.employee.field_current_address
+    - field.field.node.employee.field_date_of_birth
+    - field.field.node.employee.field_education_level
+    - field.field.node.employee.field_email_address
+    - field.field.node.employee.field_employee_birthplace
+    - field.field.node.employee.field_employee_certifications
+    - field.field.node.employee.field_employee_citizenship
+    - field.field.node.employee.field_employee_company
+    - field.field.node.employee.field_employee_department
+    - field.field.node.employee.field_employee_emergency_contact
+    - field.field.node.employee.field_employee_emergency_phone
+    - field.field.node.employee.field_employee_gender
+    - field.field.node.employee.field_employee_location
+    - field.field.node.employee.field_employee_manager
+    - field.field.node.employee.field_employee_name
+    - field.field.node.employee.field_employee_notes
+    - field.field.node.employee.field_employee_position
+    - field.field.node.employee.field_employee_resume
+    - field.field.node.employee.field_employee_ssn
+    - field.field.node.employee.field_employee_type
+    - field.field.node.employee.field_employee_visa_document
+    - field.field.node.employee.field_employee_visa_number
+    - field.field.node.employee.field_employee_work_schedule
+    - field.field.node.employee.field_hourly_rate
+    - field.field.node.employee.field_marital_status
+    - field.field.node.employee.field_phone_number
+    - field.field.node.employee.field_profile_photo
+    - field.field.node.employee.field_studies_area
+    - field.field.node.employee.field_work_permit_doc
+    - field.field.node.employee.field_work_permit_number
+    - image.style.thumbnail
+    - node.type.employee
+  module:
+    - image
+    - telephone
+    - user
+id: node.employee.teaser
+targetEntityType: node
+bundle: employee
+mode: teaser
+content:
+  field_email_address:
+    type: basic_string
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_phone_number:
+    type: telephone_link
+    label: inline
+    settings:
+      title: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_profile_photo:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: -1
+    region: content
+hidden:
+  field_badge_number: true
+  field_billable_rate: true
+  field_children_count: true
+  field_contract_type: true
+  field_current_address: true
+  field_date_of_birth: true
+  field_education_level: true
+  field_employee_birthplace: true
+  field_employee_certifications: true
+  field_employee_citizenship: true
+  field_employee_company: true
+  field_employee_department: true
+  field_employee_emergency_contact: true
+  field_employee_emergency_phone: true
+  field_employee_gender: true
+  field_employee_location: true
+  field_employee_manager: true
+  field_employee_name: true
+  field_employee_notes: true
+  field_employee_position: true
+  field_employee_resume: true
+  field_employee_ssn: true
+  field_employee_type: true
+  field_employee_visa_document: true
+  field_employee_visa_number: true
+  field_employee_work_schedule: true
+  field_hourly_rate: true
+  field_marital_status: true
+  field_studies_area: true
+  field_work_permit_doc: true
+  field_work_permit_number: true
+  links: true

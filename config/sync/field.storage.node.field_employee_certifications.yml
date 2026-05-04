@@ -1,0 +1,20 @@
+uuid: 16b0caee-e648-43ca-92c3-776cb3f8534e
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - node
+id: node.field_employee_certifications
+field_name: field_employee_certifications
+entity_type: node
+type: entity_reference_revisions
+settings:
+  target_type: node
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

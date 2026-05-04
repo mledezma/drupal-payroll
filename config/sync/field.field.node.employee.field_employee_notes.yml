@@ -1,0 +1,22 @@
+uuid: 26a2d7e0-27af-409e-aeec-f326a787545f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_employee_notes
+    - node.type.employee
+  module:
+    - text
+id: node.employee.field_employee_notes
+field_name: field_employee_notes
+entity_type: node
+bundle: employee
+label: Notes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

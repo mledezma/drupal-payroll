@@ -1,0 +1,23 @@
+uuid: b36fd7a9-b0bf-485d-aad5-5126f538c63f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_billable_rate
+    - node.type.employee
+id: node.employee.field_billable_rate
+field_name: field_billable_rate
+entity_type: node
+bundle: employee
+label: 'Billable Hourly Rate'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: 999999.99
+  prefix: $
+  suffix: ''
+field_type: decimal

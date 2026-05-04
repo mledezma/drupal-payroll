@@ -1,0 +1,21 @@
+uuid: 9f8f6f03-3e9c-460c-9ce5-a227d0692efd
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_wednesday_location
+field_name: field_wednesday_location
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,19 @@
+uuid: 7e94e94c-c29d-492d-8a0a-251242d87220
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_employee_birthplace
+    - node.type.employee
+id: node.employee.field_employee_birthplace
+field_name: field_employee_birthplace
+entity_type: node
+bundle: employee
+label: 'Place of Birth'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

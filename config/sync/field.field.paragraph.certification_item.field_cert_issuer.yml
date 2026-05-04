@@ -1,0 +1,19 @@
+uuid: 478bf153-cac7-4e71-a904-f142e47e8a9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cert_issuer
+    - paragraphs.paragraphs_type.certification_item
+id: paragraph.certification_item.field_cert_issuer
+field_name: field_cert_issuer
+entity_type: paragraph
+bundle: certification_item
+label: 'Issuing Organization'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

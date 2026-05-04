@@ -1,0 +1,19 @@
+uuid: 330179c7-1ce1-4b6a-8d52-85dc670918f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_badge_number
+    - node.type.employee
+id: node.employee.field_badge_number
+field_name: field_badge_number
+entity_type: node
+bundle: employee
+label: 'Badge Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

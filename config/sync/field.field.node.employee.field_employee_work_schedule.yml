@@ -1,0 +1,26 @@
+uuid: 3a7115e1-f32a-4b39-96ad-564f8526c5ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_employee_work_schedule
+    - node.type.employee
+  module:
+    - entity_reference_revisions
+id: node.employee.field_employee_work_schedule
+field_name: field_employee_work_schedule
+entity_type: node
+bundle: employee
+label: 'Usual Work Location'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      work_location_schedule: work_location_schedule
+    negate: 0
+field_type: entity_reference_revisions

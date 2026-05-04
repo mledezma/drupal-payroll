@@ -1,0 +1,21 @@
+uuid: 8be7e33a-6fe4-413e-b0c4-23b88ccb43f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_employee_type
+    - node.type.employee
+  module:
+    - options
+id: node.employee.field_employee_type
+field_name: field_employee_type
+entity_type: node
+bundle: employee
+label: 'Employee Type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

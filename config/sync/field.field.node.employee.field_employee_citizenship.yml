@@ -1,0 +1,22 @@
+uuid: bc66c91e-6ce1-4f4b-b374-d9eccd6985da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_employee_citizenship
+    - node.type.employee
+  module:
+    - country
+id: node.employee.field_employee_citizenship
+field_name: field_employee_citizenship
+entity_type: node
+bundle: employee
+label: Citizenship
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  selectable_countries: {  }
+field_type: country

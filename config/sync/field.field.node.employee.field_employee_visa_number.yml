@@ -1,0 +1,19 @@
+uuid: 0ae5dfbf-fa71-43a8-9833-a67e9e44e973
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_employee_visa_number
+    - node.type.employee
+id: node.employee.field_employee_visa_number
+field_name: field_employee_visa_number
+entity_type: node
+bundle: employee
+label: 'Visa Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

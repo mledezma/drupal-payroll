@@ -1,0 +1,62 @@
+uuid: da2f80ce-50d7-4dcf-8154-7d7a43fea71b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.certification_item.field_cert_date_obtained
+    - field.field.paragraph.certification_item.field_cert_expiration
+    - field.field.paragraph.certification_item.field_cert_file
+    - field.field.paragraph.certification_item.field_cert_issuer
+    - field.field.paragraph.certification_item.field_cert_name
+    - paragraphs.paragraphs_type.certification_item
+  module:
+    - datetime
+    - file
+id: paragraph.certification_item.default
+targetEntityType: paragraph
+bundle: certification_item
+mode: default
+content:
+  field_cert_date_obtained:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_cert_expiration:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_cert_file:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_cert_issuer:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_cert_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }
